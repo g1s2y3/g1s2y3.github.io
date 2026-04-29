@@ -1,0 +1,27 @@
+<% if (page.toc && page.toc.length) { %>
+<div class="toc">
+  <h3 class="toc-title">目录</h3>
+  <div class="toc-content">
+    <ol class="toc-list">
+      <% page.toc.forEach(function(item) { %>
+        <li class="toc-item toc-level-<%= item.level %>">
+          <a href="#<%- item.id %>" class="toc-link">
+            <%- item.title %>
+          </a>
+          <% if (item.children && item.children.length) { %>
+            <ol class="toc-child">
+              <% item.children.forEach(function(child) { %>
+                <li class="toc-item toc-level-<%= child.level %>">
+                  <a href="#<%- child.id %>" class="toc-link">
+                    <%- child.title %>
+                  </a>
+                </li>
+              <% }) %>
+            </ol>
+          <% } %>
+        </li>
+      <% }) %>
+    </ol>
+  </div>
+</div>
+<% } %>

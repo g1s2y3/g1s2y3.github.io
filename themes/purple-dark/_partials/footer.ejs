@@ -1,0 +1,20 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <% if (theme.theme_config.social_links) { %>
+      <div class="social-links">
+        <% Object.keys(theme.theme_config.social_links).forEach(function(platform) { %>
+          <a href="<%- theme.theme_config.social_links[platform] %>" target="_blank">
+            <i class="fab fa-<%= platform %>"></i>
+          </a>
+        <% }); %>
+      </div>
+      <% } %>
+
+      <div class="copyright">
+        <p>&copy; <%= new Date().getFullYear() %> <%- config.author %>. All rights reserved.</p>
+        <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <strong>Purple Dark Theme</strong></p>
+      </div>
+    </div>
+  </div>
+</footer>

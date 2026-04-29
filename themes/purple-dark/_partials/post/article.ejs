@@ -1,0 +1,63 @@
+<div class="post">
+  <% if (page.toc && page.toc.length && theme.theme_config.enable_toc) { %>
+    <%- partial('post/toc') %>
+  <% } %>
+
+  <h1 class="post-title"><%= page.title %></h1>
+
+  <div class="post-meta">
+    <span><i class="far fa-calendar"></i> <%= page.date.format('YYYY-MM-DD') %></span>
+    <% if (page.categories.length > 0) { %>
+      <span><i class="far fa-folder"></i> <%- page.categories.map(function(category) {
+        return '<a href="' + category.path + '">' + category.name + '</a>';
+      }).join(' / ') %></span>
+    <% } %>
+    <% if (page.tags.length > 0) { %>
+      <span><i class="far fa-tags"></i> <%- page.tags.map(function(tag) {
+        return '<a href="' + tag.path + '" class="tag">' + tag.name + '</a>';
+      }).join(' ') %></span>
+    <% } %>
+  </div>
+
+  <div class="post-content">
+    <%- page.content %>
+  </div>
+
+  <% if (theme.theme_config.post.show_share) { %>
+  <!-- Share Buttons -->
+  <div class="post-share">
+    <p>分享到：</p>
+    <a href="https://twitter.com/share?text=<%= encodeURIComponent(page.title) %>&url=<%= encodeURIComponent(config.url + url_for(page.path)) %>" target="_blank" title="Twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=<%= encodeURIComponent(config.url + url_for(page.path)) %>" target="_blank" title="Facebook">
+      <i class="fab fa-facebook"></i>
+    </a>
+    <a href="https://plus.google.com/share?url=<%= encodeURIComponent(config.url + url_for(page.path)) %>" target="_blank" title="Google+">
+      <i class="fab fa-google-plus"></i>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=<%= encodeURIComponent(config.url + url_for(page.path)) %>&title=<%= encodeURIComponent(page.title) %>" target="_blank" title="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+    </a>
+  </div>
+  <% } %>
+
+  <% if (theme.theme_config.post.show_related && site.related_posts.length > 0) { %>
+  <!-- Related Posts -->
+  <div class="related-posts">
+    <h3>相关文章</h3>
+    <ul>
+      <% site.related_posts.slice(0, theme.theme_config.post.related_limit || 5).forEach(function(post) { %>
+      <li>
+        <a href="<%= url_for(post.path) %>">
+          <%= post.title %>
+        </a>
+        <span class="recent-posts-time">
+          <i class="far fa-calendar"></i> <%= post.date.format('YYYY-MM-DD') %>
+        </span>
+      </li>
+      <% }) %>
+    </ul>
+  </div>
+  <% } %>
+</div>

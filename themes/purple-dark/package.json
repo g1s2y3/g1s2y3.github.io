@@ -1,0 +1,21 @@
+{
+  "name": "purple-dark",
+  "version": "1.0.0",
+  "description": "A dark purple theme for Hexo",
+  "hexo": {
+    "version": ">=7.0.0"
+  },
+  "author": "Claude Code",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "dependencies": {
+    "hexo-renderer-ejs": "^3.0.0",
+    "hexo-renderer-stylus": "^2.0.0",
+    "hexo-generator-archive": "^1.0.0",
+    "hexo-generator-category": "^1.0.0",
+    "hexo-generator-tag": "^1.0.0",
+    "hexo-server": "^2.0.0"
+  }
+}

@@ -1,0 +1,123 @@
+<aside class="sidebar">
+  <!-- About Widget -->
+  <div class="widget">
+    <h3 class="widget-title">关于我</h3>
+    <div class="about-content">
+      <img src="<%- theme.theme_config.avatar || '/images/avatar.jpg' %>" alt="Avatar" class="avatar">
+      <p><%= theme.theme_config.description || '个人简介' %></p>
+      <% if (theme.theme_config.social_links) { %>
+        <div class="social-links-sidebar">
+          <% Object.keys(theme.theme_config.social_links).forEach(function(platform) { %>
+            <a href="<%- theme.theme_config.social_links[platform] %>" target="_blank">
+              <i class="fab fa-<%= platform %>"></i>
+            </a>
+          <% }); %>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+  <!-- Categories Widget -->
+  <% if (theme.theme_config.enable_categories && site.categories.length > 0) { %>
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <ul class="category-list">
+      <% site.categories.forEach(function(category) { %>
+        <li class="category-item">
+          <a href="<%- url_for(category.path) %>">
+            <%= category.name %>
+            <span class="category-count">(<%= category.length %>)</span>
+          </a>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+  <% } %>
+
+  <!-- Tags Widget -->
+  <% if (theme.theme_config.enable_tags && site.tags.length > 0) { %>
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="tag-cloud">
+      <% site.tags.sort('name', 1).forEach(function(tag) { %>
+        <a href="<%- url_for(tag.path) %>" class="tag">
+          <%= tag.name %>
+          <% if (tag.length > 0) { %>
+            <span class="tag-count">(<%= tag.length %>)</span>
+          <% } %>
+        </a>
+      <% }); %>
+    </div>
+  </div>
+  <% } %>
+
+  <!-- Recent Posts Widget -->
+  <% if (theme.theme_config.enable_recent_posts) { %>
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <ul class="recent-posts">
+      <% site.posts.sort('date', -1).limit(5).forEach(function(post) { %>
+        <li>
+          <a href="<%- url_for(post.path) %>"><%= post.title %></a>
+          <span class="recent-posts-time">
+            <i class="far fa-calendar"></i> <%= post.date.format('MM-DD') %>
+          </span>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+  <% } %>
+
+  <!-- Archive Widget -->
+  <% if (site.posts.length > 0) { %>
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <ul class="archive-list">
+      <% var posts = site.posts; %>
+      <% var years = []; %>
+      <% posts.forEach(function(post) { %>
+        <% var year = post.date.year(); %>
+        <% if (years.indexOf(year) === -1) years.push(year); %>
+      <% }); %>
+      <% years.sort(function(a, b) { return b - a; }).forEach(function(year) { %>
+        <li class="archive-year">
+          <strong><%= year %> 年</strong>
+          <ul>
+            <% var months = []; %>
+            <% posts.forEach(function(post) { %>
+              <% var postYear = post.date.year(); %>
+              <% if (postYear === year) { %>
+                <% var month = post.date.month() + 1; %>
+                <% if (months.indexOf(month) === -1) months.push(month); %>
+              <% } %>
+            <% }); %>
+            <% months.sort(function(a, b) { return b - a; }).forEach(function(month) { %>
+              <li class="archive-month">
+                <a href="<%- url_for('/archives/' + year + '-' + (month < 10 ? '0' + month : month) + '/') %>">
+                  <%= month %> 月
+                </a>
+              </li>
+            <% }); %>
+          </ul>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+  <% } %>
+
+  <!-- Links Widget -->
+  <% if (theme.theme_config.links && theme.theme_config.links.length > 0) { %>
+  <div class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="links-list">
+      <% theme.theme_config.links.forEach(function(link) { %>
+        <li>
+          <a href="<%- link.url %>" target="_blank">
+            <%= link.name %>
+          </a>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+  <% } %>
+</aside>

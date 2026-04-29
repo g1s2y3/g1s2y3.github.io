@@ -1,0 +1,66 @@
+<%- partial('_partials/header') %>
+
+<main class="main">
+  <div class="container">
+    <div class="content-wrapper">
+      <!-- Archive Content -->
+      <section class="content">
+        <h1 class="post-title">归档</h1>
+
+        <% if (page.posts) { %>
+        <div class="archive-list">
+          <% var posts = page.posts; %>
+          <% var years = []; %>
+          <% posts.forEach(function(post) { %>
+            <% var year = post.date.year(); %>
+            <% if (years.indexOf(year) === -1) years.push(year); %>
+          <% }); %>
+          <% years.sort(function(a, b) { return b - a; }).forEach(function(year) { %>
+            <div class="archive-year">
+              <h2><%= year %> 年</h2>
+              <div class="archive-months">
+                <% var months = []; %>
+                <% posts.forEach(function(post) { %>
+                  <% var postYear = post.date.year(); %>
+                  <% if (postYear === year) { %>
+                    <% var month = post.date.month() + 1; %>
+                    <% var monthName = post.date.format('MMMM'); %>
+                    <% if (months.indexOf(month) === -1) {
+                         months.push(month);
+                         %>
+                         <div class="archive-month">
+                           <h3><%= monthName %></h3>
+                           <ul class="archive-posts">
+                             <% posts.forEach(function(post) { %>
+                               <% var postYear2 = post.date.year(); %>
+                               <% var postMonth2 = post.date.month() + 1; %>
+                               <% if (postYear2 === year && postMonth2 === month) { %>
+                                 <li class="archive-post">
+                                   <span class="post-date"><%= post.date.format('DD') %></span>
+                                   <a href="<%- url_for(post.path) %>"><%= post.title %></a>
+                                 </li>
+                               <% } %>
+                             <% }); %>
+                           </ul>
+                         </div>
+                    <% } %>
+                  <% } %>
+                <% }); %>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+        <% } else { %>
+        <div class="archive-empty">
+          <p>暂无文章</p>
+        </div>
+        <% } %>
+      </section>
+
+      <!-- Sidebar -->
+      <%- partial('_partials/sidebar') %>
+    </div>
+  </div>
+</main>
+
+<%- partial('_partials/footer') %>

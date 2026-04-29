@@ -1,0 +1,62 @@
+<%- partial('_partials/header') %>
+
+<main class="main">
+  <div class="container">
+    <div class="content-wrapper">
+      <!-- Tag Content -->
+      <section class="content">
+        <h1 class="post-title">标签: <%- page.tag.name %></h1>
+
+        <% if (page.posts.length > 0) { %>
+        <div class="post-list">
+          <% page.posts.forEach(function(post) { %>
+          <article class="post">
+            <h2 class="post-title">
+              <a href="<%- url_for(post.path) %>"><%= post.title %></a>
+            </h2>
+
+            <div class="post-meta">
+              <span><i class="far fa-calendar"></i> <%= post.date.format('YYYY-MM-DD') %></span>
+              <% if (post.categories.length > 0) { %>
+                <span><i class="far fa-folder"></i> <%- post.categories.map(function(category) {
+                  return '<a href="' + category.path + '">' + category.name + '</a>';
+                }).join(' / ') %></span>
+              <% } %>
+            </div>
+
+            <div class="post-content">
+              <% if (post.excerpt) { %>
+                <%- post.excerpt %>
+                <div class="read-more">
+                  <a href="<%- url_for(post.path) %>" class="btn">阅读全文</a>
+                </div>
+              <% } else { %>
+                <%- post.content.substring(0, 300) %>...
+                <div class="read-more">
+                  <a href="<%- url_for(post.path) %>" class="btn">阅读全文</a>
+                </div>
+              <% } %>
+            </div>
+          </article>
+          <% }); %>
+        </div>
+
+        <!-- Pagination -->
+        <%- partial('_partials/pagination', {
+          prev_text: __('prev'),
+          next_text: __('next')
+        }) %>
+        <% } else { %>
+        <div class="archive-empty">
+          <p>该标签下暂无文章</p>
+        </div>
+        <% } %>
+      </section>
+
+      <!-- Sidebar -->
+      <%- partial('_partials/sidebar') %>
+    </div>
+  </div>
+</main>
+
+<%- partial('_partials/footer') %>

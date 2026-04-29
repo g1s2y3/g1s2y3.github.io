@@ -1,0 +1,48 @@
+# Purple Dark Theme Configuration
+
+# 主题设置
+theme_config:
+  # 主色调
+  accent_color: '#9c27b0'
+  secondary_color: '#e91e63'
+
+  # 功能开关
+  enable_search: true
+  enable_toc: true
+  enable_comments: true
+  enable_tags: true
+  enable_categories: true
+  enable_recent_posts: true
+  enable_tag_cloud: true
+
+  # 布局设置
+  layout: left
+  sidebar_width: 300
+  post_max_width: 800
+
+  # 文章设置
+  post:
+    excerpt_length: 200
+    date_format: 'YYYY-MM-DD'
+    read_time: true
+    show_share: true
+    show_related: true
+    related_limit: 5
+
+  # 社交链接
+  social_links:
+    github: g1s2y3
+    twitter:
+    linkedin:
+    email:
+
+  # 自定义代码
+  custom_css: |
+    /* 自定义样式 */
+    .custom-class {
+      color: var(--accent-color);
+    }
+
+  custom_js: |
+    // 自定义脚本
+    console.log('Purple Dark Theme loaded');

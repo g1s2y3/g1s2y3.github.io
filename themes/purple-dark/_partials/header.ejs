@@ -1,0 +1,42 @@
+<header class="header">
+  <nav class="navbar">
+    <a href="<%- url_for('/') %>" class="logo">
+      <%- config.title || 'Blog' %>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <ul class="nav-menu" id="navMenu">
+      <% Object.keys(theme.menu).forEach(function(key) { %>
+        <li class="nav-item">
+          <a href="<%- url_for(theme.menu[key]) %>"><%= key %></a>
+        </li>
+      <% }); %>
+
+      <% if (theme.theme_config.enable_search) { %>
+        <li class="nav-item">
+          <a href="#" id="searchToggle">
+            <i class="fas fa-search"></i> 搜索
+          </a>
+        </li>
+      <% } %>
+    </ul>
+  </nav>
+
+  <!-- Search Modal -->
+  <% if (theme.theme_config.enable_search) { %>
+  <div class="search-modal" id="searchModal">
+    <div class="search-modal-content">
+      <div class="search-header">
+        <input type="text" id="searchInput" placeholder="搜索文章..." autofocus>
+        <button class="close-search" id="closeSearch">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+  <% } %>
+</header>
